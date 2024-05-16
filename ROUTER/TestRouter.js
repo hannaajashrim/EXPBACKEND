@@ -4,7 +4,7 @@ const { createuser, getuser, getsingle, deleteuser, updateuser } = require('../C
 const signup = require('../CONTROLLER/SignUp')
 const { getlist, getsinglelist, deletelist, updatelist, createlist } = require('../CONTROLLER/ExpCrud1')
 const protect = require('../MIDDLEWARE/Token')
-const { Createcat, getcat, get_Labels } = require('../CONTROLLER/CategoryCrud')
+const { Createcat, getcat, get_Labels, get_graph } = require('../CONTROLLER/CategoryCrud')
 
 
 const router = express.Router()
@@ -28,7 +28,9 @@ router.route('/updateitem/:id').put(updatelist);
 router.route('/createcat').post(Createcat);
 router.route('/getcat').get(getcat);
 
-router.route('/labels').get(get_Labels);
+router.route('/labels/:userId').get(get_Labels);
+router.route('/graph').get(get_graph);
+
 
 
 
